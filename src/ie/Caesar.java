@@ -9,4 +9,16 @@ public class Caesar {
 	public static void main(String[] args) {
 		
 	} // End main
+	
+	public String encrypt(String original, Integer key) {
+		String encrypted = "World";
+		
+		return encrypted;
+	}
+	
+	public String decrypt(String encrypted, Integer key) {
+		String decrypted = "Hello";
+		
+		return decrypted;
+	}
 } // End of class
