@@ -3,9 +3,7 @@ package ie;
 public class Cipher {
 	
 	// Method to encode the data
-	public static String encode(String original, String key){
-		
-		int Key = Integer.parseInt(key);
+	public static String encode(String original, int Key){
 		Key = Key % 26 + 26;
 		
 		StringBuilder encoded = new StringBuilder();
@@ -21,7 +19,11 @@ public class Cipher {
 				encoded.append(i);
 			}
 		}
-		
 		return encoded.toString();
+	}
+	
+	// Method to decode the data
+	public static String decode(String encodedStr, int Key) {
+		return encode(encodedStr, 25 - Key);
 	}
 }
