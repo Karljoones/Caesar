@@ -1,5 +1,10 @@
 package ie;
 
+/* This program is used to encrypt and decrypt using the caesar shift algorithm
+ * Began: 23 March 2015
+ * Copyright Karl Jones
+ */
+
 public class Cipher {
 	
 	// Method to encode the data
@@ -22,8 +27,16 @@ public class Cipher {
 		return encoded.toString();
 	}
 	
-	// Method to decode the data
+	// Method to decode the data, basically encodes the string in the opposite order
 	public static String decode(String encodedStr, int Key) {
-		return encode(encodedStr, 25 - Key);
+		return encode(encodedStr, 26 - Key);
+	}
+	
+	public static String removeSpaces(String enc) {
+		String removed;
+		
+		removed = enc.replaceAll("\\s", "");
+		
+		return removed;
 	}
 }

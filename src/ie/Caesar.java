@@ -8,6 +8,8 @@ import java.io.*;
  */
 
 public class Caesar {
+	
+	// Values assigned as examples, re-assigned when user inputs.
 	private static String original = "The quick brown fox jumped over the lazy dog";
 	private static String key = "12";
 	
@@ -18,7 +20,7 @@ public class Caesar {
 		BufferedReader str = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			Caesar.setOriginal(str.readLine());
-		} catch (IOException ioe) {
+		} catch (IOException e) {
 			System.out.println("IO error trying to read in string.");
 			System.exit(1);
 		}
@@ -28,12 +30,14 @@ public class Caesar {
 		BufferedReader ky = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			Caesar.setKey(ky.readLine());
-		} catch (IOException ioe) {
+		} catch (IOException e) {
 			System.out.println("IO error trying to read in key.");
 			System.exit(1);
 		}
+		
 		int Key = 0;
 		
+		// Convert the String key into an integer Key.
 		try {
 			Key = Integer.parseInt(Caesar.getKey());
 		} catch (NumberFormatException e) {
@@ -41,22 +45,27 @@ public class Caesar {
 			System.exit(1);
 		}
 		
-		// Print out the encoded data
-		System.out.println(Cipher.encode(Caesar.getOriginal(), Key));
+		String encoded = Cipher.encode(Caesar.getOriginal(), Key);
+		
+		// Print out the encoded data and the original message under
+		System.out.println("Your encoded string is: " + Cipher.removeSpaces(encoded));
+		System.out.println("Your original string was: " + Cipher.decode(Cipher.encode(Caesar.getOriginal(), Key), Key));
 	} // End main
 	
 	// Accessors
+	// Accessor for the message that they want to encrypt
 	public static void setOriginal(String message) {
 		original = message;
 	}
 	public static String getOriginal(){
 		return original;
 	}
-	
+	// Accessor for the key they want to encrypt the message with
 	public static void setKey(String offset) {
 		key = offset;
 	}
 	public static String getKey(){
 		return key;
 	}
+	
 } // End of class
