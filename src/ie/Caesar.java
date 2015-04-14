@@ -1,5 +1,9 @@
 package ie;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -55,10 +59,23 @@ public class Caesar {
 //		gridBagFrame.setSize(300,150);
 //		gridBagFrame.setVisible(true);
 		
+		JOptionPane.showMessageDialog(null, "Welcome!"
+				+ "\nTo encode, please enter the string and then you will be asked for the key."
+				+ "\nTo decode, enter the encoded string, simply take your key away from 26 to decode the message."
+				+ "\nPlease note: this does not work with numerical values.", "How to", JOptionPane.PLAIN_MESSAGE);
+		
 		Caesar.setOriginal(JOptionPane.showInputDialog("Enter the string to encode:"));
 		Caesar.setKey(JOptionPane.showInputDialog("Enter the key to encode:"));
-		JOptionPane.showMessageDialog(null, Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Caesar.changeKey(Caesar.getKey()))), "Encoded", JOptionPane.PLAIN_MESSAGE);
 		
+		// This code copies the encoded string into the clipboard
+		StringSelection stringSelection = new StringSelection(Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Caesar.changeKey(Caesar.getKey()))));
+		Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clpbrd.setContents(stringSelection, null);
+		
+		JOptionPane.showMessageDialog(null, 
+				Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Caesar.changeKey(Caesar.getKey()))) + "\nThis has been copied into your clipboard.", 
+				"Encoded", 
+				JOptionPane.PLAIN_MESSAGE);
 	} // End main
 	
 	// Accessors
@@ -77,6 +94,7 @@ public class Caesar {
 		return key;
 	}
 	
+	// This is used to change the key from a string to an int
 	public static int changeKey(String key) {
 		int Key = 0;
 		try {
