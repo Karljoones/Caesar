@@ -1,6 +1,7 @@
 package ie;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /* This program is used to encrypt and decrypt using the caesar shift algorithm
  * Began: 23 March 2015
@@ -49,10 +50,14 @@ public class Caesar {
 //		System.out.println("Your encoded string is: " + Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Key)));
 //		System.out.println("Your original string was: " + Cipher.decode(Cipher.encode(Caesar.getOriginal(), Key), Key));
 
-		GUI gridBagFrame = new GUI();
-		gridBagFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gridBagFrame.setSize(300,150);
-		gridBagFrame.setVisible(true);
+//		GUI gridBagFrame = new GUI();
+//		gridBagFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		gridBagFrame.setSize(300,150);
+//		gridBagFrame.setVisible(true);
+		
+		Caesar.setOriginal(JOptionPane.showInputDialog("Enter the string to encode:"));
+		Caesar.setKey(JOptionPane.showInputDialog("Enter the key to encode:"));
+		JOptionPane.showMessageDialog(null, Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Caesar.changeKey(Caesar.getKey()))), "Encoded", JOptionPane.PLAIN_MESSAGE);
 		
 	} // End main
 	
@@ -70,6 +75,17 @@ public class Caesar {
 	}
 	public static String getKey(){
 		return key;
+	}
+	
+	public static int changeKey(String key) {
+		int Key = 0;
+		try {
+			Key = Integer.parseInt(Caesar.getKey());
+		} catch (NumberFormatException e) {
+			System.out.println("IO error in format of number.");
+			System.exit(1);
+		}
+		return Key;
 	}
 	
 } // End of class
