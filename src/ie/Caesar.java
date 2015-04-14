@@ -1,6 +1,5 @@
 package ie;
 
-import java.io.*;
 import javax.swing.JFrame;
 
 /* This program is used to encrypt and decrypt using the caesar shift algorithm
@@ -61,7 +60,7 @@ public class Caesar {
 	// Accessor for the message that they want to encrypt
 	public static void setOriginal(String message) {
 		original = message;
-	}
+	} 
 	public static String getOriginal(){
 		return original;
 	}

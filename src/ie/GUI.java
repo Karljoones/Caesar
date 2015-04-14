@@ -22,10 +22,11 @@ public class GUI extends JFrame{
 	// set up the GUI
 	public GUI() {
 		super("Caesar");
+		layout = new GridBagLayout();
 		setLayout(layout);
 		constraints = new GridBagConstraints();
 		
-		// Create components
+		// Create components for the interface
 		JTextArea textArea1 = new JTextArea("Input", 5, 10);
 		JTextArea textArea2 = new JTextArea(" ", 2, 2);
 		
@@ -33,6 +34,7 @@ public class GUI extends JFrame{
 		JComboBox comboBox = new JComboBox(keys);
 		
 		JTextField textField = new JTextField("Output");
+		
 		JButton button1 = new JButton("Encode");
 		JButton button2 = new JButton("Decode");
 		JButton button3 = new JButton("Help");
