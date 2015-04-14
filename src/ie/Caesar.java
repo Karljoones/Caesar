@@ -19,7 +19,9 @@ public class Caesar {
 	private static String key = "12";
 	
 	public static void main(String[] args) {
-	
+		
+		// The below code can be used in the command line for a command line version of the program.
+		
 //		// Get the user to enter in the string and the key they want to use
 //		System.out.println("Please enter the string you want to encrypt:\n");			// get string
 //		BufferedReader str = new BufferedReader(new InputStreamReader(System.in));
@@ -53,22 +55,22 @@ public class Caesar {
 //		// Print out the encoded data and the original message under
 //		System.out.println("Your encoded string is: " + Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Key)));
 //		System.out.println("Your original string was: " + Cipher.decode(Cipher.encode(Caesar.getOriginal(), Key), Key));
-
-//		GUI gridBagFrame = new GUI();
-//		gridBagFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		gridBagFrame.setSize(300,150);
-//		gridBagFrame.setVisible(true);
 		
+		// This tells the user how to use the program.
 		JOptionPane.showMessageDialog(null, "Welcome!"
 				+ "\nTo encode, please enter the string and then you will be asked for the key."
 				+ "\nTo decode, enter the encoded string, simply take your key away from 26 to decode the message."
-				+ "\nPlease note: this does not work with numerical values.", "How to", JOptionPane.PLAIN_MESSAGE);
+				+ "\nPlease note: this does not work with numerical values.", 
+				"How to", 
+				JOptionPane.PLAIN_MESSAGE);
 		
+		// Get the user inputs
 		Caesar.setOriginal(JOptionPane.showInputDialog("Enter the string to encode:"));
 		Caesar.setKey(JOptionPane.showInputDialog("Enter the key to encode:"));
 		
 		// This code copies the encoded string into the clipboard
-		StringSelection stringSelection = new StringSelection(Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Caesar.changeKey(Caesar.getKey()))));
+		StringSelection stringSelection = new StringSelection(Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), 
+				Caesar.changeKey(Caesar.getKey()))));
 		Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
 		clpbrd.setContents(stringSelection, null);
 		
@@ -93,6 +95,7 @@ public class Caesar {
 	public static String getKey(){
 		return key;
 	}
+	// End of accessors
 	
 	// This is used to change the key from a string to an int
 	public static int changeKey(String key) {
@@ -104,6 +107,6 @@ public class Caesar {
 			System.exit(1);
 		}
 		return Key;
-	}
+	} // End changeKey()
 	
 } // End of class

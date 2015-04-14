@@ -8,7 +8,7 @@ package ie;
 public class Cipher {
 	
 	/* Method to encode the data
-	   This method get the key inputted and shifts the characters in the string up by the key.
+	   This method get the key inputed and shifts the characters in the string up by the key.
 	   It then appends the characters onto the end of a new string which is the encoded.
 	*/   
 	public static String encode(String original, int Key){
