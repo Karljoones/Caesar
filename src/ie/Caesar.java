@@ -4,7 +4,6 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /* This program is used to encrypt and decrypt using the caesar shift algorithm
@@ -52,9 +51,7 @@ public class Caesar {
 //			System.exit(1);
 //		}
 //		
-//		// Print out the encoded data and the original message under
-//		System.out.println("Your encoded string is: " + Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Key)));
-//		System.out.println("Your original string was: " + Cipher.decode(Cipher.encode(Caesar.getOriginal(), Key), Key));
+
 		
 		// This tells the user how to use the program.
 		JOptionPane.showMessageDialog(null, "Welcome!"
@@ -68,17 +65,36 @@ public class Caesar {
 		Caesar.setOriginal(JOptionPane.showInputDialog("Enter the string to encode:"));
 		Caesar.setKey(JOptionPane.showInputDialog("Enter the key to encode:"));
 		
-		// This code copies the encoded string into the clipboard
+		// This code copies the encoded string into the clipboard so that the user can paste it, or reopen the program and paste it back in (used for decoding the message)
 		StringSelection stringSelection = new StringSelection(Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), 
 				Caesar.changeKey(Caesar.getKey()))));
 		Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
 		clpbrd.setContents(stringSelection, null);
 		
+		// Show the user the output and inform them of the text that was copied to the clipboard and what the decoding key is.
 		JOptionPane.showMessageDialog(null, 
-				Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Caesar.changeKey(Caesar.getKey()))) + "\nThis has been copied into your clipboard.", 
+				Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Caesar.changeKey(Caesar.getKey()))) 
+				+ "\nThis has been copied into your clipboard.\n"
+				+ "Your decoding key is: " + (26 - Caesar.changeKey(Caesar.getKey())), 
 				"Encoded", 
 				JOptionPane.PLAIN_MESSAGE);
+		
+		// Print out the encoded data and the original message under after the program has ended
+		System.out.println("Your encoded string is: " + Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Caesar.changeKey(Caesar.getKey()))));
+		System.out.println("Your original string was: " + Cipher.decode(Cipher.encode(Caesar.getOriginal(), Caesar.changeKey(Caesar.getKey())), Caesar.changeKey(Caesar.getKey())));
 	} // End main
+	
+	// This is used to change the key from a string to an int
+	public static int changeKey(String key) {
+		int Key = 0;
+		try {
+			Key = Integer.parseInt(Caesar.getKey());
+		} catch (NumberFormatException e) {
+			System.out.println("IO error in format of number.");
+			System.exit(1);
+		}
+		return Key;
+	} // End changeKey()
 	
 	// Accessors
 	// Accessor for the message that they want to encrypt
@@ -96,17 +112,5 @@ public class Caesar {
 		return key;
 	}
 	// End of accessors
-	
-	// This is used to change the key from a string to an int
-	public static int changeKey(String key) {
-		int Key = 0;
-		try {
-			Key = Integer.parseInt(Caesar.getKey());
-		} catch (NumberFormatException e) {
-			System.out.println("IO error in format of number.");
-			System.exit(1);
-		}
-		return Key;
-	} // End changeKey()
 	
 } // End of class

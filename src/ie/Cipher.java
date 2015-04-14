@@ -30,12 +30,13 @@ public class Cipher {
 		return encoded.toString();
 	}
 	
-	// Method to decode the data, basically encodes the string in the opposite order
+	// This method re-encodes the string but with the key corresponding to what is needed to decode the message, this isnt currently used.
 	public static String decode(String encodedStr, int Key) {
 		return encode(encodedStr, 26 - Key);
 	}
 	
-	// This method is used to remove the spaces from the encoded string, making it more secure.
+	// This method removes the blank spaces from the strings
+	// The reason for this is that it makes the string more secure
 	public static String removeSpaces(String enc) {
 		String removed;
 		
