@@ -57,7 +57,8 @@ public class Caesar {
 		JOptionPane.showMessageDialog(null, "Welcome!"
 				+ "\nTo encode, please enter the string and then you will be asked for the key."
 				+ "\nTo decode, enter the encoded string, simply take your key away from 26 to decode the message."
-				+ "\nPlease note: this does not work with numerical values.", 
+				+ "\nPlease note: this does not work with numerical values."
+				+ "\nTo exit, simply type \"exit\".", 
 				"How to", 
 				JOptionPane.PLAIN_MESSAGE);
 		
@@ -103,14 +104,14 @@ public class Caesar {
 	} // End changeKey()
 	
 	// Accessors
-	// Accessor for the message that they want to encrypt
+	// Accessor for the original message
 	public static void setOriginal(String message) {
 		original = message;
 	} 
 	public static String getOriginal(){
 		return original;
 	}
-	// Accessor for the key they want to encrypt the message with
+	// Accessor for the key they want to encode the message with
 	public static void setKey(String offset) {
 		key = offset;
 	}
