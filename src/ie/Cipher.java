@@ -13,7 +13,7 @@ public class Cipher {
 	*/   
 	public static String encode(String original, int Key){
 		
-		// This ensures that the key is mod 26, has to be between 0 and 25 in order to be included in the alphabet.
+		// This ensures that the key is mot above 26, has to be between 0 and 25 in order to be included in the alphabet. It takes the remainer
 		Key = Key % 26 + 26;
 		
 		StringBuilder encoded = new StringBuilder();
@@ -27,13 +27,14 @@ public class Cipher {
 				// It then adds the character to the end of the encoded string.
 				if( Character.isUpperCase(i) ) {
 					
-					encoded.append( (char) ('A' + ( i - 'A' + Key ) % 26 ) );
+					encoded.append( (char) ('a' + ( i - 'a' + Key ) % 26 ) );
 					
 				} else {
 					
 					encoded.append( (char) ('a' + ( i - 'a' + Key ) % 26 ) );
 					
 				} // End i else
+				
 			} else {
 				
 				encoded.append(i);
@@ -42,6 +43,7 @@ public class Cipher {
 			
 		} // End for
 		
+		// This changes the StringBuilder into a string and returns it
 		return encoded.toString();
 		
 	} // End encode
@@ -61,8 +63,8 @@ public class Cipher {
 		String removed;
 		
 		// This takes all the white spaces out of the string, including spaces and special characters
-		removed = enc.replaceAll("\\s", "");
-		removed = removed.replaceAll("[^\\w\\s]","");
+		removed = enc.replaceAll("\\s", "");						// remove the spaces from the string
+		removed = removed.replaceAll("[^\\w\\s]","");				// remove the special characters from the string
 		
 		return removed;
 		

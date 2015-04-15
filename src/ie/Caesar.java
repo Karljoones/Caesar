@@ -55,20 +55,20 @@ public class Caesar {
 
 		// Give the user information on how to use the program
 		JOptionPane.showMessageDialog(null, "Welcome!"
-				+ "\nTo encode, enter the string and then you will be asked for the key."
-				+ "\nTo decode, enter the encoded string, simply take your key away from 26 to decode the message."
-				+ "\nPlease note: this does not work with numerical values."
-				+ "\nTo exit, simply type \"exit\".", 
+				+ "\nTo encode, enter the string and press OK, then you will be asked for the key."
+				+ "\nTo decode, enter the encoded string and press OK, then you will be asked for the decoding key."
+				+ "\nTo exit, type \"exit\".", 
 				"How to use the program", 
 				JOptionPane.PLAIN_MESSAGE);
 		
 		// Get the user inputs
-		Caesar.setOriginal(JOptionPane.showInputDialog("Enter the string you want to encode:"));
+		Caesar.setOriginal(JOptionPane.showInputDialog("Enter the string you want to encode:\nNote: this does not work with numerics"));
 		
 		// This code is used as an escape for the user, typing exit into the window exits the program.
 		if(Caesar.getOriginal().equals("exit") || Caesar.getOriginal().equals("Exit") || Caesar.getOriginal().equals("EXIT")) {
 			System.exit(1);
 		}
+		
 		Caesar.setKey(JOptionPane.showInputDialog("Enter the key to encode / decode:"));
 		
 		// This code is used as an escape for the user, typing exit into the window exits the program.
@@ -86,7 +86,7 @@ public class Caesar {
 		// Show the user the output and inform them of the text that was copied to the clipboard and what the decoding key is.
 		JOptionPane.showMessageDialog(null, 
 				Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), Caesar.changeKey(Caesar.getKey()))) 
-				+ "\nThis has been copied into your clipboard."
+				+ "\nThis string has been copied into your clipboard."
 				+ "\nYour decoding key is: " + (26 - Caesar.changeKey(Caesar.getKey())
 				+ "\nYour encoding key is: " + Caesar.changeKey(Caesar.getKey())), 
 				"Encoded", 
