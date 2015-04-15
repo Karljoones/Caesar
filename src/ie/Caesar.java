@@ -63,7 +63,13 @@ public class Caesar {
 		
 		// Get the user inputs
 		Caesar.setOriginal(JOptionPane.showInputDialog("Enter the string to encode:"));
+		if(Caesar.getOriginal().equals("exit")) {
+			System.exit(1);
+		}
 		Caesar.setKey(JOptionPane.showInputDialog("Enter the key to encode:"));
+		if(Caesar.getKey().equals("exit")){
+			System.exit(1);
+		}
 		
 		// This code copies the encoded string into the clipboard so that the user can paste it, or reopen the program and paste it back in (used for decoding the message)
 		StringSelection stringSelection = new StringSelection(Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), 
