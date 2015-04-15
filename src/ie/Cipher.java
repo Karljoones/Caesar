@@ -12,12 +12,19 @@ public class Cipher {
 	   It then appends the characters onto the end of a new string which is the encoded.
 	*/   
 	public static String encode(String original, int Key){
+		
+		// This ensures that the key is mod 26, has to be between 0 and 25 in order to be included in the alphabet.
 		Key = Key % 26 + 26;
 		
 		StringBuilder encoded = new StringBuilder();
 		
 		for ( char i : original.toCharArray() ) {
+			
+			// This checks if the letter is the same or not.
 			if ( Character.isLetter(i) ) {
+				
+				// This if else determines if the letter is upper case or if it is lower case.
+				// It then adds the character to the end of the encoded string.
 				if( Character.isUpperCase(i) ) {
 					encoded.append( (char) ('A' + ( i - 'A' + Key ) % 26 ) );
 				} else {
@@ -40,7 +47,10 @@ public class Cipher {
 	public static String removeSpaces(String enc) {
 		String removed;
 		
-		removed = enc.replaceAll("\\s", "");
+		// This takes all the white spaces out of the string.
+		// removed = enc.replaceAll("\\s", "");
+		
+		removed = enc.replaceAll("[^\\w\\s]","");
 		
 		return removed;
 	}
