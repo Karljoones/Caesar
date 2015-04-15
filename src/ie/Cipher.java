@@ -25,6 +25,7 @@ public class Cipher {
 				
 				// This if else determines if the letter is upper case or if it is lower case.
 				// It then adds the character to the end of the encoded string.
+				// This also removes the uppercase characters from the output.
 				if( Character.isUpperCase(i) ) {
 					
 					encoded.append( (char) ('a' + ( i - 'a' + Key ) % 26 ) );
@@ -33,13 +34,13 @@ public class Cipher {
 					
 					encoded.append( (char) ('a' + ( i - 'a' + Key ) % 26 ) );
 					
-				} // End i else
+				}
 				
 			} else {
 				
 				encoded.append(i);
 				
-			} // End if else
+			} 
 			
 		} // End for
 		
@@ -62,7 +63,6 @@ public class Cipher {
 		
 		String removed;
 		
-		// This takes all the white spaces out of the string, including spaces and special characters
 		removed = enc.replaceAll("\\s", "");						// remove the spaces from the string
 		removed = removed.replaceAll("[^\\w\\s]","");				// remove the special characters from the string
 		

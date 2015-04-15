@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 
 public class Caesar {
 	
-	// Values to store the strings
 	private static String original;
 	private static String key;
 	
@@ -61,7 +60,7 @@ public class Caesar {
 				"How to use the program", 
 				JOptionPane.PLAIN_MESSAGE);
 		
-		// Get the user inputs
+		// Get the user inputs and check if the user wants to exit the program.
 		Caesar.setOriginal(JOptionPane.showInputDialog("Enter the string you want to encode:\nNote: this does not work with numerics"));
 		
 		// This code is used as an escape for the user, typing exit into the window exits the program.
@@ -92,7 +91,7 @@ public class Caesar {
 				"Encoded", 
 				JOptionPane.PLAIN_MESSAGE);
 		
-		// Print out the encoded data and the original message under after the program has ended
+		// Print out the encoded data and the original message under after the program has ended in the command line.
 		System.out.println("Your encoded string is: " 
 				+ Cipher.removeSpaces(Cipher.encode(Caesar.getOriginal(), 
 				Caesar.changeKey(Caesar.getKey()))));
@@ -120,7 +119,7 @@ public class Caesar {
 		} catch (NumberFormatException e) {
 			
 			System.out.println("IO error in the format of the number, please make sure it is between 0-9");
-			System.exit(1);				// End the program
+			System.exit(1);	
 			
 		}
 		
@@ -128,7 +127,6 @@ public class Caesar {
 		
 	} // End changeKey()
 	
-	// Accessors
 	// Accessor for the original message
 	public static void setOriginal(String message) {
 		original = message;
