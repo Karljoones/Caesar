@@ -26,26 +26,38 @@ public class Cipher {
 				// This if else determines if the letter is upper case or if it is lower case.
 				// It then adds the character to the end of the encoded string.
 				if( Character.isUpperCase(i) ) {
+					
 					encoded.append( (char) ('A' + ( i - 'A' + Key ) % 26 ) );
+					
 				} else {
+					
 					encoded.append( (char) ('a' + ( i - 'a' + Key ) % 26 ) );
+					
 				} // End i else
 			} else {
+				
 				encoded.append(i);
+				
 			} // End if else
+			
 		} // End for
+		
 		return encoded.toString();
+		
 	} // End encode
 	
 	// This method re-encodes the string but with the key corresponding to what is needed to decode the message, this isnt currently used.
 	public static String decode(String encodedStr, int Key) {
+		
 		return encode(encodedStr, 26 - Key);
+		
 	} // End decode()
 	
 	// This method removes the blank spaces from the strings
 	// The reason for this is that it makes the string more secure
 	// And harder to crack the code.
 	public static String removeSpaces(String enc) {
+		
 		String removed;
 		
 		// This takes all the white spaces out of the string, including spaces and special characters
@@ -53,5 +65,7 @@ public class Cipher {
 		removed = removed.replaceAll("[^\\w\\s]","");
 		
 		return removed;
+		
 	} // End removeSpaces()
+	
 } // End class

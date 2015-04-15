@@ -102,6 +102,7 @@ public class Caesar {
 					Caesar.changeKey(Caesar.getKey())));
 		System.out.println("Your decoding key is: " + (26 - Caesar.changeKey(Caesar.getKey())));
 		System.out.println("Your encoding key is: " + Caesar.changeKey(Caesar.getKey()));
+		
 	} // End main
 	
 	// This is used to change the key from a string to an int
@@ -110,14 +111,21 @@ public class Caesar {
 		// Key needs to be initilised to 0  so that it can always return something if it is not changed
 		
 		int Key = 0;
+		
 		// try to change the string into an integer, if it does not work, give the exception.
 		try {
+			
 			Key = Integer.parseInt(Caesar.getKey());
+			
 		} catch (NumberFormatException e) {
+			
 			System.out.println("IO error in the format of the number, please make sure it is between 0-9");
 			System.exit(1);				// End the program
+			
 		}
+		
 		return Key;
+		
 	} // End changeKey()
 	
 	// Accessors
