@@ -19,7 +19,8 @@ public class Caesar {
 	
 	public static void main(String[] args) {
 		
-		// The below code can be used in the command line for a command line version of the program.
+		// The below code can be used in the command line for a command line version of the program, 
+		// this is disabled in favour of the interface that is presented to the user.
 		
 //		// Get the user to enter in the string and the key they want to use
 //		System.out.println("Please enter the string you want to encrypt:\n");			// get string
@@ -94,11 +95,12 @@ public class Caesar {
 	// This is used to change the key from a string to an int
 	public static int changeKey(String key) {
 		int Key = 0;
+		// try to change the string into an integer, if it does not work, give the exception.
 		try {
 			Key = Integer.parseInt(Caesar.getKey());
 		} catch (NumberFormatException e) {
 			System.out.println("IO error in format of number.");
-			System.exit(1);
+			System.exit(1);				// End the program
 		}
 		return Key;
 	} // End changeKey()
