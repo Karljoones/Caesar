@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
 
 public class Caesar {
 	
-	// Values assigned as examples, re-assigned when user inputs.
-	private static String original = "The quick brown fox jumped over the lazy dog";
-	private static String key = "12";
+	// Values to store the strings
+	private static String original;
+	private static String key;
 	
 	public static void main(String[] args) {
 		
