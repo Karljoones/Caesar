@@ -106,6 +106,9 @@ public class Caesar {
 	
 	// This is used to change the key from a string to an int
 	public static int changeKey(String key) {
+		
+		// Key needs to be initilised to 0  so that it can always return something if it is not changed
+		
 		int Key = 0;
 		// try to change the string into an integer, if it does not work, give the exception.
 		try {
